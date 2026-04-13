@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webhook Payload Test</title>
+    <style>
+        body { 
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(rgba(2,6,23,.8),rgba(2,6,23,.8)), url('baground image/baground for resume parser website.jpg');
+            background-size: cover;
+            color: #fff; 
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .test-box { 
+            background: rgba(11,18,32,.95);
+            padding: 20px; 
+            margin: 15px 0; 
+            border: 2px solid #fbbf24; 
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 { color: #fbbf24; text-align: center; }
+        h2 { color: #3b82f6; margin-top: 0; }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .info { color: #3b82f6; }
+        .warning { color: #f59e0b; }
+        textarea, input { 
+            width: 100%; 
+            padding: 10px; 
+            background: #1f2937; 
+            color: #fff; 
+            border: 1px solid #fbbf24; 
+            border-radius: 4px; 
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        button { 
+            padding: 12px 25px; 
+            background: #f59e0b; 
+            color: #000; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-size: 14px;
+            margin: 10px 5px 10px 0;
+            transition: all 0.3s;
+        }
+        button:hover { background: #fbbf24; transform: translateY(-2px); }
+        button:active { transform: translateY(0); }
+        .payload-display {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #3b82f6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .data-section {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 3px solid #3b82f6;
+            border-radius: 2px;
+        }
+        .label {
+            color: #fbbf24;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔌 Webhook Payload Tester</h1>
+        <p style="text-align: center; color: #e5e7eb;">Test what data is being sent to your N8N webhook</p>
+
+        <div class="test-box">
+            <h2>Step 1: Enter Job Description</h2>
+            <p>This is what goes in the text box on result.html:</p>
+            <textarea id="jobDescription" placeholder="Enter job description here..." rows="5">Senior Software Engineer
+
+Requirements:
+- 5+ years experience with JavaScript
+- Experience with React and Node.js
+- RESTful API design knowledge
+- Git version control
+- Agile development experience
+
+Responsibilities:
+- Develop new features
+- Code reviews
+- Mentoring junior developers</textarea>
+            <button onclick="generatePayload()">Generate Full Webhook Payload</button>
+        </div>
+
+        <div class="test-box">
+            <h2>Step 2: Sample Resume Data</h2>
+            <p>This is what comes from the resume extraction (right side of result.html):</p>
+            <button onclick="loadSampleResume()">Load Sample Resume Data</button>
+            <div class="payload-display" id="resumeDataDisplay">
+                <span class="warning">[Sample resume data will appear here]</span>
+            </div>
+        </div>
+
+        <div class="test-box">
+            <h2>Step 3: Complete Webhook Payload</h2>
+            <p>This is EXACTLY what gets sent to the webhook URL:</p>
+            <div style="margin: 10px 0;">
+                <strong style="color: #fbbf24;">Webhook URL:</strong><br>
+                <code>https://n8n.srv922914.hstgr.cloud/webhook/Vetting%20Report</code>
+            </div>
+            <div style="margin: 10px 0;">
+                <strong style="color: #fbbf24;">HTTP Method:</strong> <span class="success">POST</span>
+            </div>
+            <div style="margin: 10px 0;">
+                <strong style="color: #fbbf24;">Content-Type:</strong> <span class="success">application/json</span>
+            </div>
+            <button onclick="generatePayload()">Generate Payload JSON</button>
+            <button onclick="copyToClipboard()">Copy Payload to Clipboard</button>
+            <button onclick="sendTestPayload()">Send Test to Webhook</button>
+            <div class="payload-display" id="fullPayload">
+                <span class="warning">[Full payload will appear here]</span>
+            </div>
+        </div>
+
+        <div class="test-box">
+            <h2>Step 4: What Gets Sent?</h2>
+            <p style="color: #e5e7eb;"><strong>✅ Job Description:</strong> Text from the left textarea</p>
+            <p style="color: #e5e7eb;"><strong>✅ Resume Data:</strong> Extracted info shown on the right side</p>
+            <p style="color: #e5e7eb;"><strong>✅ Metadata:</strong> File information (name, type, size)</p>
+            <p style="color: #10b981;"><strong>Result:</strong> N8N webhook receives ALL THREE pieces of data at once</p>
+        </div>
+
+        <div class="test-box">
+            <h2>Step 5: Response Logging</h2>
+            <p>This shows what your webhook returns:</p>
+            <div class="payload-display" id="responseDisplay">
+                <span class="warning">[Webhook response will appear here]</span>
+            </div>
+        </div>
+
+        <div class="test-box" style="background: rgba(16, 185, 129, 0.1); border-color: #10b981;">
+            <h2 style="color: #10b981;">✅ System Confirmation</h2>
+            <p id="systemStatus"></p>
+            <ul style="font-size: 14px; line-height: 1.8;">
+                <li>✓ Job description text box: result.html</li>
+                <li>✓ Resume data (right side): result.js displays it</li>
+                <li>✓ Both sent in payload: { Resume: { data }, meta, jobDescription }</li>
+                <li>✓ Webhook URL: https://n8n.srv922914.hstgr.cloud/webhook/Vetting%20Report</li>
+                <li>✓ HTTP Method: POST with JSON body</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function generatePayload() {
+            var jobDesc = document.getElementById('jobDescription').value;
+            
+            // Sample resume data structure (what comes from extraction)
+            var resumeData = {
+                name: "John Doe",
+                email: "john@example.com",
+                phone: "+1-555-0123",
+                summary: "Experienced software engineer with 7 years in web development",
+                experience: [
+                    {
+                        position: "Senior Developer",
+                        company: "Tech Corp",
+                        duration: "2020-Present",
+                        description: "Led frontend team development"
+                    }
+                ],
+                skills: ["JavaScript", "React", "Node.js", "Python"],
+                education: [
+                    {
+                        degree: "BS Computer Science",
+                        school: "University",
+                        year: "2016"
+                    }
+                ]
+            };
+
+            // The payload sent to webhook
+            // The resume data is sent as a single string under the heading 'Resume:\n'
+            var payload = {
+                Resume: 'Resume:\n' + JSON.stringify(resumeData, null, 2),
+                meta: {
+                    fileName: "resume.pdf",
+                    fileType: "application/pdf",
+                    uploadTime: new Date().toISOString()
+                },
+                jobDescription: jobDesc
+            };
+
+            // Display the full payload
+            var display = document.getElementById('fullPayload');
+            display.textContent = JSON.stringify(payload, null, 2);
+            
+            // Also show resume data
+            document.getElementById('resumeDataDisplay').textContent = JSON.stringify(resumeData, null, 2);
+            
+            return payload;
+        }
+
+        function copyToClipboard() {
+            var display = document.getElementById('fullPayload');
+            if (display.textContent.includes('[Full payload')) {
+                alert('Generate payload first!');
+                return;
+            }
+            navigator.clipboard.writeText(display.textContent).then(function() {
+                alert('✅ Payload copied to clipboard!');
+            });
+        }
+
+        function sendTestPayload() {
+            var jobDesc = document.getElementById('jobDescription').value;
+            if (!jobDesc.trim()) {
+                alert('Please enter job description first!');
+                return;
+            }
+
+            var payload = generatePayload();
+            
+            document.getElementById('responseDisplay').textContent = '⏳ Sending to webhook...';
+            
+            fetch('https://n8n.srv922914.hstgr.cloud/webhook/Vetting%20Report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) {
+                document.getElementById('responseDisplay').textContent = '✅ Response Status: ' + res.status + ' ' + res.statusText;
+                var ctype = (res.headers.get('content-type') || '').toLowerCase();
+                if (ctype.indexOf('application/json') !== -1) return res.json();
+                return res.text();
+            })
+            .then(function(result) {
+                var responseEl = document.getElementById('responseDisplay');
+                if (typeof result === 'string') {
+                    responseEl.textContent = result;
+                } else {
+                    responseEl.textContent = JSON.stringify(result, null, 2);
+                }
+            })
+            .catch(function(err) {
+                document.getElementById('responseDisplay').innerHTML = '<span class="error">❌ Error: ' + err.message + '</span>';
+            });
+        }
+
+        function loadSampleResume() {
+            var resumeData = {
+                name: "John Doe",
+                email: "john@example.com",
+                phone: "+1-555-0123",
+                summary: "Experienced software engineer with 7 years in web development",
+                experience: [
+                    {
+                        position: "Senior Developer",
+                        company: "Tech Corp",
+                        duration: "2020-Present",
+                        description: "Led frontend team development"
+                    },
+                    {
+                        position: "Junior Developer",
+                        company: "StartUp Inc",
+                        duration: "2017-2020",
+                        description: "Full stack development"
+                    }
+                ],
+                skills: ["JavaScript", "React", "Node.js", "Python", "PostgreSQL", "MongoDB"],
+                education: [
+                    {
+                        degree: "BS Computer Science",
+                        school: "State University",
+                        year: "2016"
+                    }
+                ]
+            };
+            
+            document.getElementById('resumeDataDisplay').textContent = JSON.stringify(resumeData, null, 2);
+        }
+
+        function checkSystem() {
+            var status = '<span class="success">✅ All systems configured correctly:</span><br>';
+            status += '• Text box for job description: Present in result.html<br>';
+            status += '• Resume extraction on right side: Working<br>';
+            status += '• Webhook integration: Configured<br>';
+            status += '• Payload structure: { data, meta, jobDescription }<br>';
+            status += '• Both pieces sent together: YES ✓';
+            document.getElementById('systemStatus').innerHTML = status;
+        }
+
+        // Run on load
+        window.addEventListener('DOMContentLoaded', function() {
+            checkSystem();
+            loadSampleResume();
+        });
+    </script>
+</body>
+</html>

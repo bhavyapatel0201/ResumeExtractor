@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Vetting Report - Resume Extractor</title>
+<link rel='stylesheet' href='styles.css?v=__BUILD__'>
+<style>
+  .vetting-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(rgba(2,6,23,.7),rgba(2,6,23,.7)),url('baground image/baground for resume parser website.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .vetting-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(148,163,184,.2);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .vetting-header h1 {
+    color: #e2e8f0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .vetting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    height: calc(100vh - 120px);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .vetting-panel {
+    background: rgba(11,18,32,.92);
+    border: 1px solid rgba(148,163,184,.2);
+    border-radius: 16px;
+    padding: 16px;
+    overflow-y: auto;
+    box-shadow: 0 16px 40px rgba(0,0,0,.45);
+    min-height: calc(100vh - 100px);
+  }
+  
+  .vetting-panel h2 {
+    color: #e2e8f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(148,163,184,.2);
+  }
+  
+  .vetting-markdown {
+    color: #ffffff;
+    line-height: 1.6;
+  }
+  
+  .vetting-markdown h1, .vetting-markdown h2, .vetting-markdown h3 {
+    color: #3b82f6;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+  
+  .vetting-markdown h1 {
+    font-size: 1.4rem;
+    color: #3b82f6;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: 800;
+  }
+  
+  /* Special styling for Skills heading - blue color, bold, same size as certifications */
+  .vetting-markdown h1.skills-heading {
+    color: #3b82f6 !important;
+    font-weight: 800;
+    font-size: 1.4rem;
+  }
+  
+  /* Special styling for "Why is this resume fit for job description?" heading */
+  .vetting-markdown h1.question-heading {
+    color: #10b981 !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #10b981;
+  }
+  
+  .vetting-markdown h2 {
+    font-size: 1.4rem;
+  }
+  
+  .vetting-markdown h3 {
+    font-size: 1.2rem;
+  }
+  
+  .vetting-markdown p {
+    margin: 8px 0;
+    color: #ffffff;
+    line-height: 1.35;
+  }
+  
+  .vetting-markdown strong {
+    color: #fbbf24;
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+  
+  .vetting-markdown ul, .vetting-markdown ol {
+    margin: 10px 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  /* Two-column layout for Technical and Soft Skills */
+  .skills-flex {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .skills-flex .col {
+    flex: 1 1 0;
+    min-width: 0;
+    background: rgba(15,23,42,0.4);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(148,163,184,0.06);
+  }
+  .skills-flex .col h3, .skills-flex .col h2, .skills-flex .col h1 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #3b82f6;
+    font-size: 1.05rem;
+  }
+  
+  .vetting-markdown li {
+    margin: 4px 0;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .btn.ghost {
+    background: #0f172a;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+  }
+  
+  .btn.ghost:hover {
+    background: #0b1220;
+    border-color: #475569;
+    box-shadow: 0 8px 22px rgba(0,0,0,.35);
+  }
+  
+  .btn.warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  .btn.warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+  }
+  
+  .btn.success {
+    background: #166534;
+    color: white;
+    border: 1px solid #14532d;
+  }
+  
+  .btn.success:hover {
+    background: #15803d;
+    border-color: #166534;
+    box-shadow: 0 12px 28px rgba(22,101,52,.4);
+  }
+
+  /* Header right "Download FINAL" button - yellow/orange styling */
+  .vetting-header .header-right { margin-left: auto; }
+  .vetting-header .header-right .btn.success {
+    background: linear-gradient(135deg,#f59e0b 0%,#fb923c 50%,#f97316 100%);
+    border-color: rgba(249,115,22,0.5);
+    color: #0b1220;
+    box-shadow: 0 12px 30px rgba(249,115,22,.18);
+    transition: transform .18s ease, box-shadow .18s ease, filter .12s ease;
+  }
+  .vetting-header .header-right .btn.success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 42px rgba(249,115,22,.28);
+    filter: brightness(1.02);
+  }
+  
+  .vetting-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn.info {
+    background: linear-gradient(90deg,#22c55e,#38bdf8);
+    color: #0b1220;
+    border: 1px solid #0ea5e9;
+  }
+  
+  .btn.info:hover {
+    background: linear-gradient(90deg,#16a34a,#0ea5e9);
+    border-color: #0284c7;
+    box-shadow: 0 12px 28px rgba(14,165,233,.35);
+  }
+</style>
+</head>
+<body>
+<main class='vetting-container'>
+  <header class='vetting-header'>
+    <div class='header-left'>
+      <a href='result.html' class='btn ghost'>← Back to Results</a>
+    </div>
+    <div class='header-right'>
+      <button id='downloadFinal' class='btn success'>Download FINAL</button>
+    </div>
+  </header>
+  <section class='vetting-grid'>
+    <div class='vetting-panel'>
+      <h2>Original Resume Data</h2>
+      <div id='originalData' class='vetting-markdown'></div>
+    </div>
+    <div class='vetting-panel'>
+      <div class='vetting-controls'>
+        <button id='editVettingBtn' class='btn info'>Edit</button>
+        <button id='downloadVettingBtn' class='btn success'>Download</button>
+    <!-- sendToWebhookBtn removed per request -->
+        </div>
+  <h2>Job Description</h2>
+      <div id='vettingReport' class='markdown'></div>
+    </div>
+  </section>
+</main>
+<!-- Full-screen download overlay (hidden by default) -->
+<div id="dlOverlay" class="dl-overlay" style="display:none;pointer-events:auto;" aria-hidden="true">
+  <div class="dl-backdrop"></div>
+  <div class="dl-icon" id="dlIcon" aria-hidden="true">
+    <!-- download SVG icon -->
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h3.67v4h6V9h3.67L12 2z"/></svg>
+  </div>
+</div>
+
+<div id='effectsLayer' aria-hidden='true'></div>
+<script src='https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'></script>
+<script src='vetting-report.js?v=__BUILD__'></script>
+</body>
+</html>

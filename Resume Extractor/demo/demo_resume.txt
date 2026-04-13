@@ -1,0 +1,87 @@
+Candidate Info
+Name: Jane Doe
+Email: jane.doe@example.com
+Phone: +1 555-123-4567
+Location: San Francisco, CA
+LinkedIn: linkedin.com/in/janedoe
+GitHub: github.com/janedoe
+
+Professional Summary
+Full-stack software engineer with 7+ years of experience building scalable web applications, APIs, and rich user interfaces. Passionate about clean architecture, developer experience, and measurable outcomes. Adept at translating ambiguous requirements into robust, well-tested solutions.
+
+Skills
+- Languages: TypeScript, JavaScript, Python, Go, SQL
+- Frameworks: React, Next.js, Node.js, Express, FastAPI
+- Cloud: AWS (EC2, S3, Lambda, API Gateway), Vercel, Netlify
+- Databases: PostgreSQL, MySQL, MongoDB, Redis
+- Tooling: GitHub Actions, Docker, Terraform, Nx, Turborepo
+- Testing: Jest, React Testing Library, Cypress, Playwright, PyTest
+
+Work Experience
+Company: Acme Corp
+Role: Senior Software Engineer
+Dates: Jan 2022 - Present
+- Led migration of a legacy monolith to a modular Next.js platform, improving Time To First Byte by 48% and Core Web Vitals across LCP/CLS.
+- Designed and implemented a typed contract between frontend and backend via tRPC, eliminating 70% of API schema mismatch bugs.
+- Introduced server-driven UI configuration, enabling A/B tests to be shipped without frontend redeploys.
+- Implemented CI pipelines (GitHub Actions) with full test matrix and preview URL deploys on PRs.
+
+Company: Bright Labs
+Role: Software Engineer
+Dates: Aug 2019 - Dec 2021
+- Built a real-time collaboration editor using CRDTs and WebSockets, scaling to >10k concurrent users with under 200ms latency.
+- Optimized API queries and added indexes, reducing P99 API latency by 65%.
+- Partnered with data team to launch an analytics funnel, informing product decisions that increased activation by 12%.
+
+Company: Startly
+Role: Junior Software Engineer
+Dates: Jul 2017 - Jul 2019
+- Implemented customer onboarding flows and role-based access controls.
+- Wrote integration tests covering payments and email flows; reduced regressions by 40%.
+
+Education
+University of Example
+Bachelor of Science in Computer Science
+Graduated: 2017
+GPA: 3.8/4.0
+
+Certifications
+- AWS Certified Developer – Associate
+- Google Professional Cloud Developer
+
+Projects
+Project: TaskPilot
+- A cross-platform task manager with offline-first syncing, built with React Native and SQLite.
+- Implemented end-to-end encryption for user data using libsodium.
+
+Project: MovieScope
+- A movie search and discovery app powered by TMDB, featuring server-side rendering and image optimization.
+- Reached 15k monthly active users and open-sourced the codebase.
+
+Publications
+- "Designing Typed Contracts for Distributed Systems" — TechConf 2023
+- "Optimizing React Rendering at Scale" — WebPerf Summit 2022
+
+Speaking Engagements
+- JSConf: "State Machines for UI — Reliable Frontends"
+- DevOps Days: "From CI to Continuous Confidence"
+
+Work Preferences
+- Hybrid or Remote-first teams
+- Product-minded engineering culture
+- Emphasis on mentorship and pair programming
+
+Emergency Contact
+Name: John Doe
+Relationship: Sibling
+Phone: +1 555-987-6543
+
+Social Presence
+Twitter: twitter.com/janedoe
+Blog: blog.janedoe.dev
+
+
+
+
+
+

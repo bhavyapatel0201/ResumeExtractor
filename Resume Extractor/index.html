@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Resume Extractor</title>
+<link rel='stylesheet' href='styles.css?v=__BUILD__'>
+</head>
+<body>
+<main class='container'>
+<h1>Upload Your Document <span class='subtitle'>Supported formats: PDF, DOCX (Max size: 16MB)</span></h1>
+<div class='card'>
+<div class='headline-accent'></div>
+<div class='drop-wrap'>
+  <label class='dropzone' for='fileInput' id='dropzone'>
+    <div class='plus'>+</div>
+    <div class='choose'>Choose File</div>
+    <div id='dropFilename' class='file-name'></div>
+  </label>
+  <input id='fileInput' type='file' accept='.pdf,.docx' hidden>
+  <div id='fileBox' class='file-box'>No file selected</div>
+  </div>
+  <div class='actions'>
+    <button id='uploadBtn' class='btn primary block' disabled>
+      <svg class='icon' viewBox='0 0 24 24' aria-hidden='true'><path fill='currentColor' d='M3 17h18v2H3zM11 15V7.83L9.41 9.4 8 8l4-4 4 4-1.41 1.41L13 7.83V15z'/></svg>
+      <span>Upload and Summarize</span>
+    </button>
+  </div>
+  <div class='footer-row'>
+    <div class='badges'>
+      <span class='badge'><span class='dot pdf'></span> PDF</span>
+      <span class='badge'><span class='dot docx'></span> DOCX</span>
+    </div>
+    <button id='demoBtn' class='btn ghost' style='background:#38bdf8;border-color:#0ea5e9;color:#0b1220'>
+      <svg class='icon' viewBox='0 0 24 24' aria-hidden='true'><path fill='currentColor' d='M8 5v14l11-7z'/></svg>
+      <span>Try Demo Files</span>
+    </button>
+  </div>
+  <div class='status'>The parsing process can take a maximum of 10 minutes—thank you for your patience.</div>
+  <div id='status' class='status' aria-live='polite'></div>
+  <div id='progressWrap' class='progress hidden' aria-hidden='true' aria-live='polite' aria-label='Upload progress'>
+    <div id='progressBar' class='progress-bar' style='width:0%'></div>
+  </div>
+  <div id='animLayer' aria-hidden='true'></div>
+  </div>
+</main>
+<div id='demoModal' class='modal hidden' aria-hidden='true'>
+  <div class='modal-content'>
+    <div class='modal-header'>
+      <h2>Demo Text</h2>
+      <button id='closeModal' class='btn'>Close</button>
+    </div>
+    <pre id='demoText' class='code'></pre>
+  </div>
+</div>
+<script src='script.js?v=__BUILD__'></script>
+</body>
+</html>

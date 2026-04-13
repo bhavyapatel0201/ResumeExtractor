@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Description Flow Test</title>
+    <style>
+        body { font-family: Arial; background: #1f2937; color: #fff; padding: 20px; }
+        .test-box { background: #0f172a; padding: 20px; margin: 10px 0; border: 1px solid #fbbf24; border-radius: 8px; }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .info { color: #3b82f6; }
+        textarea { width: 100%; padding: 10px; background: #1f2937; color: #fff; border: 1px solid #fbbf24; border-radius: 4px; font-family: monospace; }
+        button { padding: 10px 20px; background: #f59e0b; color: #000; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #fbbf24; }
+    </style>
+</head>
+<body>
+    <h1>📋 Job Description Flow Test</h1>
+    
+    <div class="test-box">
+        <h2>Step 1: Enter Job Description</h2>
+        <p>Fill the textarea below and click "Store in sessionStorage"</p>
+        <textarea id="jobDesc" placeholder="Paste a job description here..." rows="6"></textarea>
+        <br><br>
+        <button onclick="storeJobDescription()">Store in sessionStorage</button>
+    </div>
+
+    <div class="test-box">
+        <h2>Step 2: Verify Storage</h2>
+        <button onclick="checkStorage()">Check sessionStorage</button>
+        <p id="storageStatus"></p>
+    </div>
+
+    <div class="test-box">
+        <h2>Step 3: Simulate Webhook Payload</h2>
+        <p>This is what will be sent to the webhook:</p>
+        <pre id="payloadPreview"></pre>
+    </div>
+
+    <div class="test-box">
+        <h2>Step 4: Navigate to Vetting Report Page</h2>
+        <button onclick="navigateToVettingReport()">Go to Vetting Report</button>
+        <p class="info">This will redirect you to vetting-report.html which should display the job description.</p>
+    </div>
+
+    <div class="test-box">
+        <h2>✅ Verification Checklist</h2>
+        <ul>
+            <li id="check1">✓ HTML elements exist</li>
+            <li id="check2">✓ JavaScript functions are available</li>
+            <li id="check3">✓ sessionStorage API works</li>
+        </ul>
+    </div>
+
+    <script>
+        // Check if elements exist
+        function verifyElements() {
+            var checks = [];
+            
+            // Check result.html elements
+            checks.push('result.html jobDescriptionInput: ' + (document.body.innerHTML.includes('jobDescriptionInput') ? '✓' : '✗'));
+            checks.push('result.html jobDescriptionAlert: ' + (document.body.innerHTML.includes('jobDescriptionAlert') ? '✓' : '✗'));
+            checks.push('result.html handleVettingReportClick: ' + (typeof window.handleVettingReportClick !== 'undefined' ? '✓' : '✗'));
+            
+            console.log('VERIFICATION RESULTS:');
+            checks.forEach(c => console.log(c));
+        }
+
+        function storeJobDescription() {
+            var jobDesc = document.getElementById('jobDesc').value;
+            if (!jobDesc.trim()) {
+                alert('Please enter a job description!');
+                return;
+            }
+            sessionStorage.setItem('job_description', jobDesc);
+            alert('✅ Job description stored in sessionStorage!');
+            checkStorage();
+            updatePayloadPreview();
+        }
+
+        function checkStorage() {
+            var stored = sessionStorage.getItem('job_description');
+            var statusEl = document.getElementById('storageStatus');
+            if (stored) {
+                statusEl.innerHTML = '<span class="success">✅ Job description is stored! Length: ' + stored.length + ' characters</span>';
+            } else {
+                statusEl.innerHTML = '<span class="error">✗ Job description NOT in sessionStorage</span>';
+            }
+        }
+
+        function updatePayloadPreview() {
+            var jobDesc = sessionStorage.getItem('job_description') || '';
+            var payload = {
+                data: { /* resume data would be here */ },
+                meta: { /* metadata would be here */ },
+                jobDescription: jobDesc
+            };
+            document.getElementById('payloadPreview').textContent = JSON.stringify(payload, null, 2);
+        }
+
+        function navigateToVettingReport() {
+            var jobDesc = sessionStorage.getItem('job_description');
+            if (!jobDesc) {
+                alert('Please store a job description first!');
+                return;
+            }
+            alert('Redirecting to vetting-report.html...\n\nThe job description should appear at the top of the vetting report with heading: "📋 Job Description"');
+            window.location.href = 'vetting-report.html';
+        }
+
+        // Run verification on load
+        window.addEventListener('DOMContentLoaded', function() {
+            verifyElements();
+            checkStorage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Results - Resume Extractor</title>
+<link rel='stylesheet' href='styles.css?v=20250917155701'>
+</head>
+<body>
+<main class='result-container'>
+  <header class='result-header'>
+    <h1>Extraction Results</h1>
+    <a href='index.html' class='btn ghost'>← Back</a>
+  </header>
+  <section class='result-grid'>
+    <div class='panel'>
+      <h2>Input Data</h2>
+      <div id='extracted' class='markdown markdown--input'></div>
+    </div>
+    <div class='panel'>
+      <div style='display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px'>
+        <div style='display:flex;gap:8px;align-items:center'>
+          <button id='editBtn' class='btn info'>Edit</button>
+        </div>
+        <div style='display:flex;gap:8px;align-items:center'>
+          <button id='downloadDocxTemplateAll' class='btn success'>Download OUTPUT</button>
+        </div>
+      </div>
+      <div id='markdown' class='markdown'></div>
+    </div>
+  </section>
+</main>
+<div id='effectsLayer' aria-hidden='true'></div>
+<script src='https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js'></script>
+<!-- DOCX to HTML/Text -->
+<script src='https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js'></script>
+<!-- PDF.js core -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js'></script>
+<script src='result.js?v=20250917155701'></script>
+</body>
+</html>
+
+

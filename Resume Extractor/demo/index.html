@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Doe - Professional Resume</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--light-gray);
+        }
+        
+        .container {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .job, .project {
+            margin-bottom: 20px;
+        }
+        
+        .job-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .job-title, .project-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .company, .project-tech {
+            font-style: italic;
+        }
+        
+        .date {
+            color: #666;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-category {
+            margin-bottom: 15px;
+        }
+        
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+            margin: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .job-header, .project-header {
+                flex-direction: column;
+            }
+            
+            .date {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jane Doe</h1>
+            <p>Full-stack Software Engineer</p>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:jane.doe@example.com">jane.doe@example.com</a></span>
+                <span>📱 +1 555-123-4567</span>
+                <span>📍 San Francisco, CA</span>
+                <span>🔗 <a href="https://linkedin.com/in/janedoe" target="_blank">linkedin.com/in/janedoe</a></span>
+                <span>💻 <a href="https://github.com/janedoe" target="_blank">github.com/janedoe</a></span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Professional Summary</h2>
+            <p>Full-stack software engineer with 7+ years of experience building scalable web applications, APIs, and rich user interfaces. Passionate about clean architecture, developer experience, and measurable outcomes. Adept at translating ambiguous requirements into robust, well-tested solutions.</p>
+        </section>
+
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill-category">
+                    <strong>Languages:</strong><br>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Go</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+                <div class="skill-category">
+                    <strong>Frameworks:</strong><br>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express</span>
+                    <span class="skill-tag">FastAPI</span>
+                </div>
+                <div class="skill-category">
+                    <strong>Cloud & Databases:</strong><br>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">Redis</span>
+                </div>
+                <div class="skill-category">
+                    <strong>Tools:</strong><br>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Jest</span>
+                    <span class="skill-tag">Cypress</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Work Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Senior Software Engineer</span> at <span class="company">Acme Corp</span>
+                    </div>
+                    <div class="date">Jan 2022 - Present</div>
+                </div>
+                <ul>
+                    <li>Led migration of a legacy monolith to a modular Next.js platform, improving Time To First Byte by 48% and Core Web Vitals across LCP/CLS.</li>
+                    <li>Designed and implemented a typed contract between frontend and backend via tRPC, eliminating 70% of API schema mismatch bugs.</li>
+                    <li>Introduced server-driven UI configuration, enabling A/B tests to be shipped without frontend redeploys.</li>
+                    <li>Implemented CI pipelines (GitHub Actions) with full test matrix and preview URL deploys on PRs.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Software Engineer</span> at <span class="company">Bright Labs</span>
+                    </div>
+                    <div class="date">Aug 2019 - Dec 2021</div>
+                </div>
+                <ul>
+                    <li>Built a real-time collaboration editor using CRDTs and WebSockets, scaling to >10k concurrent users with under 200ms latency.</li>
+                    <li>Optimized API queries and added indexes, reducing P99 API latency by 65%.</li>
+                    <li>Partnered with data team to launch an analytics funnel, informing product decisions that increased activation by 12%.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Junior Software Engineer</span> at <span class="company">Startly</span>
+                    </div>
+                    <div class="date">Jul 2017 - Jul 2019</div>
+                </div>
+                <ul>
+                    <li>Implemented customer onboarding flows and role-based access controls.</li>
+                    <li>Wrote integration tests covering payments and email flows; reduced regressions by 40%.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Bachelor of Science in Computer Science</span><br>
+                    <span class="company">University of Example</span>
+                </div>
+                <div class="date">Graduated: 2017</div>
+            </div>
+            <p>GPA: 3.8/4.0</p>
+        </section>
+
+        <section class="section">
+            <h2>Projects</h2>
+            
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">TaskPilot</div>
+                </div>
+                <p>A cross-platform task manager with offline-first syncing, built with React Native and SQLite. Implemented end-to-end encryption for user data using libsodium.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-title">MovieScope</div>
+                </div>
+                <p>A movie search and discovery app powered by TMDB, featuring server-side rendering and image optimization. Reached 15k monthly active users and open-sourced the codebase.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Certifications</h2>
+            <ul>
+                <li>AWS Certified Developer – Associate</li>
+                <li>Google Professional Cloud Developer</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Publications & Speaking</h2>
+            <p><strong>Publications:</strong><br>
+            - "Designing Typed Contracts for Distributed Systems" — TechConf 2023<br>
+            - "Optimizing React Rendering at Scale" — WebPerf Summit 2022</p>
+            
+            <p><strong>Speaking Engagements:</strong><br>
+            - JSConf: "State Machines for UI — Reliable Frontends"<br>
+            - DevOps Days: "From CI to Continuous Confidence"</p>
+        </section>
+
+        <footer style="margin-top: 40px; text-align: center; color: #666; font-size: 0.9em;">
+            <p>References available upon request</p>
+        </footer>
+    </div>
+</body>
+</html>
