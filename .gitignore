@@ -1,0 +1,10 @@
+
+# secrets and local files
+*.pem
+*.key
+.env
+*.bak
+*.backup_original
+~$*.docx
+__pycache__/
+.venv/
