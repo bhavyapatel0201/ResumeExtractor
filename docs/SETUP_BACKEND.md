@@ -29,7 +29,7 @@ python -c "from docx import Document; print('python-docx is installed!')"
 1. Open a **new PowerShell terminal**
 2. Navigate to the project directory:
    ```powershell
-   cd "c:\Users\Mann\Resume Extractor"
+   cd path\to\ResumeExtractor
    ```
 3. Start the backend server:
    ```powershell
