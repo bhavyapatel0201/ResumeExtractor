@@ -93,7 +93,7 @@ class VettingReportHandler(BaseHTTPRequestHandler):
                 return
 
             # Path to template file
-            template_path = r'C:\Users\Mann\Resume Extractor\WORD FORMAT 2\Sample 2.docx'
+            template_path = os.path.join(os.getcwd(), 'WORD FORMAT 2', 'Sample 2.docx')
             
             if not os.path.exists(template_path):
                 self.send_response(404)

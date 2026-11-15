@@ -18,3 +18,5 @@ __pycache__/
 ~$*.docx
 __pycache__/
 .venv/
+
+tmp_*.docx

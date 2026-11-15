@@ -1,8 +1,10 @@
+import os
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from docx import Document
 from lxml import etree
 import os
 
-path = r"C:\Users\Mann\Resume Extractor\SAMPLE FINAL\FINAL TEMPLATE.docx"
+path = os.path.join(ROOT, 'SAMPLE FINAL', 'FINAL TEMPLATE.docx')
 print(f"Template path: {path}")
 if not os.path.exists(path):
     print("File not found")

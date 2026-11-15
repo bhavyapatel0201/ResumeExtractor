@@ -45,7 +45,7 @@ Use this PowerShell script to run the server in the background:
 
 ```powershell
 $pythonExe = "python"
-$scriptPath = "C:\Users\Mann\Resume Extractor\backend_server.py"
+$scriptPath = "backend_server.py"
 Start-Process -NoNewWindow -FilePath $pythonExe -ArgumentList $scriptPath
 ```
 
@@ -65,7 +65,7 @@ Start-Process -NoNewWindow -FilePath $pythonExe -ArgumentList $scriptPath
 6. **Browser automatically downloads** the file as `vetting-report-[DATE].docx`
 
 ## Template File Location
-- **Original Template**: `C:\Users\Mann\Resume Extractor\WORD FORMAT 2\Sample 2.docx`
+- **Original Template**: `WORD FORMAT 2\Sample 2.docx`
 - **Status**: Never modified (a copy is made for each download)
 
 ## Troubleshooting
@@ -78,7 +78,7 @@ Start-Process -NoNewWindow -FilePath $pythonExe -ArgumentList $scriptPath
 
 ### Error: "Template file not found"
 **Possible Causes**:
-- The path `C:\Users\Mann\Resume Extractor\WORD FORMAT 2\Sample 2.docx` doesn't exist
+- The path `WORD FORMAT 2\Sample 2.docx` doesn't exist
 - Check that the file exists in Windows Explorer
 - Verify the file is named exactly `Sample 2.docx`
 
@@ -112,8 +112,8 @@ Create a file named `start-servers.bat`:
 
 ```batch
 @echo off
-start "HTTPS Server" cmd /k "cd C:\Users\Mann\Resume Extractor && python https_server.py"
-start "Backend Server" cmd /k "cd C:\Users\Mann\Resume Extractor && python backend_server.py"
+start "HTTPS Server" cmd /k "cd . && python https_server.py"
+start "Backend Server" cmd /k "cd . && python backend_server.py"
 echo Both servers started. Open https://127.0.0.1:8443 in your browser.
 ```
 

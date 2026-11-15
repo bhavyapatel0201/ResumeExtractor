@@ -1,3 +1,5 @@
+import os
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from docx import Document
 from lxml import etree
 import os
@@ -22,8 +24,8 @@ def inspect(path):
             print('sectPr dump error', e)
 
 
-template = r"C:\Users\Mann\Resume Extractor\SAMPLE FINAL\FINAL TEMPLATE.docx"
-generated = r"C:\Users\Mann\Resume Extractor\tmp_test.docx"
+template = os.path.join(ROOT, 'SAMPLE FINAL', 'FINAL TEMPLATE.docx')
+generated = os.path.join(ROOT, 'tmp_test.docx')
 inspect(template)
 inspect(generated)
 print('\nDone')
