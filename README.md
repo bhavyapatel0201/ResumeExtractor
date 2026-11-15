@@ -10,8 +10,8 @@ A web app for uploading resumes and turning them into structured, formatted Word
 
 - Upload a resume as `.pdf`, `.doc`, `.docx` or `.txt` from the browser.
 - The file is posted to an n8n webhook as `multipart/form-data` (field name `file`).
-- ✏️ The n8n workflow extracts the candidate details, and the result is shown on a results page.
-- ✏️ The Python backend fills Word templates to produce a formatted document (the `tools/` folder has helpers for inspecting and comparing templates).
+- The n8n workflow extracts the candidate details, and the result is shown on a results page.
+- The Python backend fills Word templates to produce a formatted document (the `tools/` folder has helpers for inspecting and comparing templates).
 
 ## How it fits together
 
