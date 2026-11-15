@@ -436,8 +436,6 @@ Still not working?
     │
     ▼
 Check docs:
-• README_SETUP.md
-• QUICK_REFERENCE.md
 • SETUP_BACKEND.md
     │
     ▼
