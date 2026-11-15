@@ -1,7 +1,7 @@
 @echo off
 REM Start both HTTPS and Backend servers for Resume Extractor
 
-cd /d "C:\Users\Mann\Resume Extractor"
+cd /d "%~dp0"
 
 echo ============================================
 echo Starting Resume Extractor Servers
