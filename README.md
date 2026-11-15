@@ -1,10 +1,12 @@
-﻿# Resume Extractor
+# Resume Extractor
 
 A web app for uploading resumes and turning them into structured, formatted Word documents. The browser page sends each resume to an [n8n](https://n8n.io) workflow through a webhook, and a local Python backend handles the Word-template output.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![n8n](https://img.shields.io/badge/n8n-EA4B71?style=flat&logo=n8n&logoColor=white)
+
+![Upload page](docs/upload.png)
 
 ## What it does
 
