@@ -62,9 +62,13 @@ Open `https://127.0.0.1:8443`. Your browser will warn about the self-signed cert
 
 ## More docs
 
-Extra setup notes and implementation guides are in [`docs/`](docs/).
+Setup notes and system guides are in [`docs/`](docs/).
 
 ## Author
 
 **Bhavya Patel**, Master of Applied Computing, University of Windsor
 [LinkedIn](https://linkedin.com/in/bhavya-patel-data) · [Portfolio](https://bhavyapatel0201.github.io)
+
+## Credits
+
+Built with <who and for what>.
